@@ -13,4 +13,6 @@ int main(void)
 	printf("Size of a long int: %li\n", sizeof(long int));
 	printf("Size of a long long int: %li\n", sizeof(long long int));
 	printf("Size of a float: %li\n", sizeof(float));
+
+	return (0);
 }
