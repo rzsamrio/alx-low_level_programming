@@ -1,6 +1,6 @@
-/*
- * main - pronts text and stderr material
- * void: no cli required
+/**
+ * main - prints text and stderr material
+ * @void: no cli required
  * Return: 1
  */
 

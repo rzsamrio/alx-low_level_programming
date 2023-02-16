@@ -1,5 +1,5 @@
-/*
- * main - prints systedata type sizem
+/**
+ * main - prints system data type size
  * @void: takes no input
  * Return: 0 on exit
  */
