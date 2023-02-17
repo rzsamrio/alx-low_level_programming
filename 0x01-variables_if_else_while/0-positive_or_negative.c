@@ -8,6 +8,7 @@
 
 int main(void)
 {
+	int n;
 
 	if (n == 0)
 		printf("%d is 0\n", n);

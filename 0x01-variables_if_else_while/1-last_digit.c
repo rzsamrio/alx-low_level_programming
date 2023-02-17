@@ -8,6 +8,7 @@
 
 int main(void)
 {
+	int n;
 	int last = n % 10;
 
 	if (last == 0)
