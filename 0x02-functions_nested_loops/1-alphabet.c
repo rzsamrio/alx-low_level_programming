@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * main - print the alphabets
+ * print_alphabet - print the alphabets
  *
  * Return: 0
  */
 
-int main(void)
+void print_alphabet(void)
 {
 	int i;
 
