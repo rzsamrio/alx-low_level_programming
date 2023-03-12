@@ -2,7 +2,10 @@
 #include <stdlib.h>
 
 /**
- *
+ * main - multtiply 2 cla
+ * @argc : number of cla
+ * @argv : cla
+ * Return : 0 on completion
  */
 
 int main(int argc, char *argv[])
