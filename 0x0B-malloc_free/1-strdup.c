@@ -8,7 +8,7 @@
 
 char *_strdup(char *str)
 {
-	if (str == NULL)
+	if (str != NULL)
 	{
 		long length, i;
 		char *dup;

@@ -9,15 +9,23 @@
 
 char *str_concat(char *s1, char *s2)
 {
-	if (s1 != NULL && s2 != NULL)
+	if (s1 != NULL || s2 != NULL)
 	{
 		long l1, l2, l, i;
 		char *cat;
 
-		for (l1 = 0; s1[l1] != '\0'; l1++)
-			continue;
-		for (l2 = 0; s2[l2] != '\0'; l2++)
-			continue;
+		l1 = 0;
+		l2 = 0;
+		if (s1 != NULL)
+		{
+			for (; s1[l1] != '\0'; l1++)
+				continue;
+		}
+		if (s2 != NULL)
+		{
+			for (l2 = 0; s2[l2] != '\0'; l2++)
+				continue;
+		}
 
 		l = l1 + l2;
 		cat = malloc(l);
