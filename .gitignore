@@ -1,0 +1,4 @@
+# executable
+*.out
+# temporary
+*.swp
