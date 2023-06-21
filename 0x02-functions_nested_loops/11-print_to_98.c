@@ -19,9 +19,9 @@ void print_to_98(int n)
 			for (; i < 0; i++)
 			{
 				_putchar('-');
-				if (i < -99) 
+				if (i < -99)
 				{
-					_putchar((i * -1)/ 100 + '0');
+					_putchar((i * -1) / 100 + '0');
 					_putchar(((i * -1) / 10) % 10 + '0');
 					_putchar(((i * -1) % 10) % 10 + '0');
 				}
