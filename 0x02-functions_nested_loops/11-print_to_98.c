@@ -1,67 +1,81 @@
 #include "main.h"
+void print_more(int i, int n);
 
 /**
  * print_to_98 - prints all numbers till 98
  * @n: starting value
- *
  */
-
 void print_to_98(int n)
 {
-	int i, j, c, num[10];
+	int i;
 
-	if (n > 98)
+	i = n;
+	n = 98;
+
+	if (i <= 98)
 	{
-		for (; n >= 98; n--)
+		if (i < 0) /* Negative numbers */
 		{
-			i = n;
-			
-			/* store number as individual characters */
-			for (j = 0, c = 0; i != 0; j++, c++)
+			for (; i < 0; i++)
 			{
-				num[j] = i % 10;
-				i /= 10;
+				_putchar('-');
+				if (i < -9)
+					_putchar((i * -1) / 10 + '0');
+				_putchar((i * -1) % 10 + '0');
+				_putchar(',');
+				_putchar(' ');
 			}
+			i = 0;
+		}
 
-			/* Print numbers */
-			for (j = c - 1; j >= 0; j--)
-				_putchar(num[j] + '0');
-
-			if (n != 98)
+		for (; i < n + 1; i++) /* positive numbers */
+		{
+			if (i < 10)
+				_putchar(i + '0');
+			else
+			{
+				_putchar(i / 10 + '0');
+				_putchar(i % 10 + '0');
+			}
+			if (i != 98)
 			{
 				_putchar(',');
 				_putchar(' ');
 			}
 		}
 	}
-
-	else
-	{
-		for (; n <= 98; n++)
-		{
-			i = n;
-
-			/* store number as individual characters */
-			for (j = 0, c = 0; i != 0; j++, c++)
-			{
-				num[j] = i % 10;
-				i /= 10;
-			}
-
-			/* Print numbers */
-			for (j = c - 1; j >= 0; j--)
-				_putchar(num[j] + '0');
-
-			if (n != 98)
-			{
-				_putchar(',');
-				_putchar(' ');
-			}
-		}
-	}
-
+	else /* > 98 */
+		print_more(i, n);
 	_putchar('\n');
 }
 
 /**
- * Code doesn't print 0 and doesn't allow negative numbers */
+ * print_more - prints the values above 98
+ * @n: start value
+ * @i: iterator
+ */
+
+void print_more(int i, int n)
+{
+	{
+		for (; i > n - 1; i--)
+		{
+			if (i < 100)
+			{
+				_putchar(i / 10 + '0');
+				_putchar(i % 10 + '0');
+			}
+			else
+			{
+				_putchar(i / 100 + '0');
+				_putchar((i / 10) % 10 + '0');
+				_putchar((i % 10) % 10 + '0');
+			}
+			if (i != 98)
+			{
+				_putchar(',');
+				_putchar(' ');
+			}
+		}
+	}
+}

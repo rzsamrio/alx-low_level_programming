@@ -8,9 +8,14 @@
 int main(void)
 {
     print_to_98(0);
+	_putchar('\n');
     print_to_98(98);
-    print_to_98(111);
+	_putchar('\n');
+    print_to_98(121);
+	_putchar('\n');
     print_to_98(81);
+	_putchar('\n');
     print_to_98(-10);
+	_putchar('\n');
     return (0);
 }
