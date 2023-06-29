@@ -9,7 +9,8 @@ int _strlen(char *str);
  * Return: a filled destination string
  */
 
-char *_strncat(char *dest, char *src, int n){
+char *_strncat(char *dest, char *src, int n)
+{
 	int length;
 	int i;
 
@@ -19,7 +20,7 @@ char *_strncat(char *dest, char *src, int n){
 		dest[i] = *src;
 		src++;
 	}
-    dest[length] = '\0';
+	dest[length] = '\0';
 	return (dest);
 }
 
