@@ -8,12 +8,11 @@ int _strlen(char *str);
  * Return: a filled destination string
  */
 
-char *_strcat(char *dest, char *src)
-{
+char *_strncat(char *dest, char *src, int n){
 	int length;
 	int i;
 
-	length = _strlen(dest) + _strlen(src);
+	length = _strlen(dest) + n;
 	for (i = _strlen(dest); i < length; i++)
 	{
 		dest[i] = *src;
