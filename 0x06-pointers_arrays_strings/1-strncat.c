@@ -2,9 +2,10 @@
 int _strlen(char *str);
 
 /**
- * _strcat - concatenates 2 strings
+ * _strncat - concatenates 2 strings
  * @dest : destination strings
  * @src : string to copy
+ * @n : number of bytes to add
  * Return: a filled destination string
  */
 
@@ -13,7 +14,7 @@ char *_strncat(char *dest, char *src, int n){
 	int i;
 
 	length = _strlen(dest) + n;
-	for (i = _strlen(dest); i < length; i++)
+	for (i = _strlen(dest); i < length && *src != '\0'; i++)
 	{
 		dest[i] = *src;
 		src++;
