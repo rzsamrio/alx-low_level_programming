@@ -2,3 +2,5 @@
 *.out
 # temporary
 *.swp
+# main
+main.c
