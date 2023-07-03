@@ -1,34 +1,28 @@
 #include "main.h"
 
 /**
- * _strspn - returns the number of bytes of accept in the prefix of s
- * @s: string to screen
- * @accept: char to screen for
- * Return: no of bytes
-*/
+ * _strspn - finds the number of bytes of accept in thebfirst part of s
+ * @s: the superset string
+ * @accept: the subset string
+ * Return: number of bytes
+ */
 
 unsigned int _strspn(char *s, char *accept)
 {
-    char *head;
-    int length;
+	int i, j, n;
 
-    head = s;
-    length = 0;
-    while(*s++)
-    {
-        if (*accept++ == 0)
-            break;
-        if(*s == ' ')
-            break;
-        if (*s == *accept)
-        {
-            length++;
-        }
-        if (*(s+1) == '\0' && *(accept+1) != '\0')
-        {
-            s = head;
-            accept++;
-        }
-    }
-    return (length);
+	n = 0;
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if (s[i] == ' ')
+			break;
+		for (j = 0; accept[j] != '\0'; j++)
+		{
+			if (accept[j] == s[i])
+				n++;
+		}
+	}
+	return (n);
 }
+
+
