@@ -9,30 +9,51 @@
  *
  *
  */
+void save_numerical(char *numchar, int *numint);
 
 int _atoi(char *s)
 {
 	int integer;
+	int *pint = &integer;
+	char *iterator = s;
 
 	integer = 0;
-	while (*s)
+	while (*iterator)
 	{
-		if (*s == ' ') 	/* skip whitespace */
-			s++;
-		if (*s >= '0' && *s <= '9') /* numeric? */
-		{	
-			if (integer > 0)
-			{
-				integer *= 10; 
-				integer += (*s - '0');
-			}
+		if (*iterator == ' ' || *iterator == '+') 	/* skip whitespace */
+			iterator++;
+		else if (*iterator == '-') /* negative? */
+		{
+			s = iterator;
+			iterator++;
+			if (*iterator >= '0' && *iterator <= '9') /* numeric? */
+				save_numerical(iterator, pint);
 			else
-				integer += (*s - '0');
+				break;
+		}
+		else if (*s >= '0' && *s <= '9') /* on positive */
+		{
+			save_numerical(iterator, pint);
 		}
 		else
 			break;
-		s++;
+		iterator++;
+		_putchar('\n');
+		_putchar(*iterator);
 	}
+	if (*s == '-')
+		return (integer *= -1);
+	return (integer);
+}
 
-return integer;
-}			
+
+void save_numerical(char *numchar, int *numint)
+{
+		if (*numint > 0)
+		{
+			*numint *= 10; 
+			*numint += (*numchar - '0');
+		}
+		else
+			*numint += (*numchar - '0');
+}
