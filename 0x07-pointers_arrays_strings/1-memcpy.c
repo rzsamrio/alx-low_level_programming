@@ -2,19 +2,18 @@
 /**
  * _memcpy - fills memory with n constant bytes
  * @dest: address of copied memory to return
- * @b: address of source memory
+ * @src: address of source memory
  * @n: no. of mem slots to copy
  * Return: address of filled memory
 */
 
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
-    char *head;
+	char *head;
 
-    head = src;
-    while(src++ < (head + n))
-    {
-        *dest = *src;
-    }
+	for (head = src; src < (head + n); src++, dest++)
+	{
+		*dest = *src;
+	}
 return (dest);
 }
