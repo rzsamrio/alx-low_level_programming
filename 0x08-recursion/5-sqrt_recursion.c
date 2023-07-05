@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * squarec : checks for the sqrt with recursion and an iterator
+ * squarec - checks for the sqrt with recursion and an iterator
  * @n: number
  * @i: iterator
  * Return: the square root, -1 if none
@@ -9,7 +9,7 @@
 int squarec(int n, int i)
 {
 	int square;
-	
+
 	square = i * i;
 	if (square > n)
 		return (-1);
