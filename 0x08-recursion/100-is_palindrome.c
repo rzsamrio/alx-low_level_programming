@@ -91,7 +91,7 @@ int is_palindrome(char *s)
 }
 
 /**
- * Pseudocode
+ * comment - my pseudocode and lessons
  * save reverse string in an array with recursion
  * write function that compares 2 strings and returns 1 if equal
  * compare 2 strings
