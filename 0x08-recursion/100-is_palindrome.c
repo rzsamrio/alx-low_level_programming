@@ -1,19 +1,9 @@
-/** 
- * Pseudocode
- * save reverse string in an array with recursion
- * write function that compares 2 strings and returns 1 if equal
- * compare 2 strings
- *
- * Learnt more about the memory allocation on the stack (aka static malloc)
- * while working this
-*/
-
 #include "main.h"
 
 /**
  * save - saves a copy of a string using recursion
  * @s: address of string to clone
- * @copy: copied string
+ * @fwd: address of copied string
 */
 
 void save(char *s, char *fwd)
@@ -31,7 +21,7 @@ void save(char *s, char *fwd)
  * rsave - reverses and stores a string using recursion
  * @head: saved address of the first byte of the original string
  * @s: original string address that becomes mobile
- * @copy: address of the stored reverse string
+ * @rev: address of the stored reverse string
 */
 
 void rsave(char *head, char *s, char *rev)
@@ -98,5 +88,14 @@ int is_palindrome(char *s)
 		return (1);
 	else
 		return (0);
-	
 }
+
+/**
+ * Pseudocode
+ * save reverse string in an array with recursion
+ * write function that compares 2 strings and returns 1 if equal
+ * compare 2 strings
+ *
+ * Learnt more about the memory allocation on the stack (aka static malloc)
+ * while working this
+*/
