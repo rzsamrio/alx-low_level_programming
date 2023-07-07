@@ -19,12 +19,6 @@ int main(int argc, char *argv[])
 	}
 	num = atoi(argv[1]);
 	coins = 0;
-	if (num == 0)
-	{
-		printf("0\n");
-		return (2);
-	}
-	coins = 0;
 	while (num != 0)
 	{
 		if (num / 25 != 0)
@@ -40,8 +34,7 @@ int main(int argc, char *argv[])
 		if (num / 5 != 0)
 		{
 			coins += num / 5;
-			num -= (num / 5) * 5;
-			
+			num -= (num / 5) * 5;	
 		}
 		if (num / 2 != 0)
 		{
