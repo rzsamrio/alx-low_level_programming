@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	if (n < 0)
 	{
 		printf("0\n");
-		return(2);
+		return (2);
 	}
 	coin = get_coins(n);
 	printf("%d\n", coin);
@@ -54,7 +54,7 @@ int get_coins(int num)
 		if (num / 5 != 0)
 		{
 			coins += num / 5;
-			num -= (num / 5) * 5;	
+			num -= (num / 5) * 5;
 		}
 		if (num / 2 != 0)
 		{
