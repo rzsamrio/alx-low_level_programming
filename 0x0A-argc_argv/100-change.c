@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-
 	num = atoi(argv[1]);
 	coins = 0;
 	if (num == 0)
@@ -25,41 +24,35 @@ int main(int argc, char *argv[])
 		printf("0\n");
 		return (2);
 	}
-
 	coins = 0;
 	while (num != 0)
 	{
-		int tcoin = 0;
 		if (num / 25 != 0)
 		{
-			tcoin = num / 25;
-			num -= tcoin * 25;
-			coins += tcoin; 
+			coins += num / 25;
+			num -= (num / 25) * 25;
 		}
 		if (num / 10 != 0)
 		{
-			tcoin = num / 10;
-			num -= tcoin * 10;
-			coins += tcoin;
+			coins += num / 10;
+			num -= (num / 10) * 10;
 		}
 		if (num / 5 != 0)
 		{
-			tcoin = num / 5;
-			num -= tcoin * 5;
-			coins += tcoin;
+			coins += num / 5;
+			num -= (num / 5) * 5;
+			
 		}
 		if (num / 2 != 0)
 		{
-			tcoin = num / 2;
-			num -= tcoin * 2;
-			coins += tcoin;
+			coins += num / 2;
+			num -= (num / 2) * 2;
 		}
 		if (num == 1)
 		{
 			coins += num;
 			num--;
 		}
-
 	}
 	printf("%d\n", coins);
 	return (0);
