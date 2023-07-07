@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int get_coins(int num);
 /**
  * main - Finds the minimum number of coins given as change
  * @argc: number of cla
@@ -10,14 +11,33 @@
 
 int main(int argc, char *argv[])
 {
-	int num, coins;
+	int n, coin;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
-	num = atoi(argv[1]);
+	n = atoi(argv[1]);
+	if (n < 0)
+	{
+		printf("0\n");
+		return(2);
+	}
+	coin = get_coins(n);
+	printf("%d\n", coin);
+	return (0);
+}
+
+/**
+ * get_coins - calculates the minimum number of coins for cash
+ * @num: amount of cash
+ * Return: no. of coins
+*/
+int get_coins(int num)
+{
+	int coins;
+
 	coins = 0;
 	while (num != 0)
 	{
@@ -47,6 +67,5 @@ int main(int argc, char *argv[])
 			num--;
 		}
 	}
-	printf("%d\n", coins);
-	return (0);
+		return (coins);
 }
