@@ -29,8 +29,10 @@ char *str_concat(char *s1, char *s2)
 	int i, j, length;
 	char *cat;
 
-	if (s1 == NULL && s2 == NULL)
-		return (NULL);
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 	length = _strlen(s1) + _strlen(s2);
 	cat = malloc((sizeof(char) * length) + 1);
 	if (cat == NULL)
