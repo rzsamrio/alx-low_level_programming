@@ -21,7 +21,7 @@ char *argstostr(int ac, char **av)
 		for (j = 0; av[i][j] != '\0'; j++)
 			length++;
 	}
-	argcat = malloc((sizeof(char) * length) + (sizeof(char) * ac));
+	argcat = malloc((sizeof(char) * length) + (sizeof(char) * ac) + 1);
 	if (argcat == NULL)
 		return (NULL);
 	for (i = 0, c = 0; i < ac; i++)
@@ -37,6 +37,6 @@ char *argstostr(int ac, char **av)
 			}
 		}
 	}
-	argcat[length + ac] = '\0';
+	argcat[length + ac + 1] = '\0';
 	return (argcat);
 }
