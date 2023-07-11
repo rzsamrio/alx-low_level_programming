@@ -37,6 +37,6 @@ char *argstostr(int ac, char **av)
 			}
 		}
 	}
-	argcat[length + ac - 1] = '\0';
+	argcat[length + ac] = '\0';
 	return (argcat);
 }
