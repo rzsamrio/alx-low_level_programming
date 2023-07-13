@@ -8,15 +8,22 @@
 
 unsigned int _strlen(char *s)
 {
-        char *head = s;
+	char *head = s;
 
-        while (*s++ != '\0')
-        {
-                continue;
-        }
-        return (s - head - 1);
+		while (*s++ != '\0')
+		{
+			continue;
+		}
+		return (s - head - 1);
 }
 
+/**
+ * string_nconcat - catenates 2 strings with specific length of 2nd string
+ * @s1: string 1
+ * @s2: string 2
+ * @n: length of string 2 to add
+ * Return: address of catenated string or null if it fails
+*/
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *ptr;
@@ -49,20 +56,4 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	ptr[length + 1] = 0;
 	return (ptr);
-}
-
-
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
-int main(void)
-{
-    char *concat;
-
-    concat = string_nconcat("Best ", "School !!!", 6);
-    printf("%s\n", concat);
-    free(concat);
-    return (0);
 }
