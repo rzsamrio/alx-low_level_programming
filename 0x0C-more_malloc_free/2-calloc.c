@@ -9,13 +9,17 @@
 
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	void *arr;
+	unsigned int capacity = nmemb * size;
+	unsigned int i;
+	char *arr;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
-	arr = malloc(nmemb * size);
+	arr = malloc(capacity);
 	if (arr == NULL)
 		return (NULL);
-	memset(arr, 0, nmemb);
+	for (i = 0; i < capacity; i++)
+		arr[i] = 0;
 	return (arr);
 }
+
