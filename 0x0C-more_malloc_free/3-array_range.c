@@ -9,14 +9,17 @@
 
 int *array_range(int min, int max)
 {
-	int *arr, i, t_value; /* declaring array, iterator and a temporary storage */
+	int *arr, i, length; /* declaring array, iterator and a temporary storage */
 
 	if (min > max)
 		return (NULL);
-	arr = malloc(sizeof(int) * ((max - min) + 1));
+	length = (max - min) + 1;
+	arr = malloc(sizeof(int) * length);
 	if (arr == NULL)
 		return (NULL);
-	for (i = 0, t_value = 0; i <= max; i++, t_value++)
-		arr[i] = min + t_value;
+	for (i = 0; i < length ; i++)
+	{
+		arr[i] = min + i;
+	}
 	return (arr);
 }
