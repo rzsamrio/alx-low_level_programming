@@ -4,19 +4,20 @@
  * _strcpy - copies a string
  * @dest: pointer to destination string
  * @src: pointer to source string
- * Return: destination string
  */
 
-char *_strcpy(char *dest, char *src)
+void _strcpy(char *dest, char *src)
 {
 	int i, length;
 
+	if (src == NULL)
+		return;
 	for (i = 0, length = 0; src[i] != '\0'; i++)
 		length++;
 	for (i = 0; i <= length; i++)
 		dest[i] = src[i];
-	return (dest);
 }
+
 /**
  * _strlen - Returns the length of a string
  * @s: string
@@ -61,12 +62,15 @@ dog_t *new_dog(char *name, float age, char *owner)
 			return (NULL);
 		}
 	}
-	else /* ...so it is best to simply make our dest = null on null source */
+	else
+	{
+		/* ...so it is best to simply make our dest = null on null source */
 		dog->name = NULL;
+	}
 
 	if (owner != NULL) /* same here */
 	{
-		dog->owner = malloc(_strlen(name) + 1);
+		dog->owner = malloc(_strlen(owner) + 1);
 		if (dog->owner == NULL)
 		{
 			free(dog->name);
