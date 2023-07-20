@@ -8,6 +8,7 @@
 void print_all(const char * const format, ...)
 {
 	int i;
+	char *temp;
 	va_list arg;
 
 	va_start(arg, format);
@@ -17,11 +18,12 @@ void print_all(const char * const format, ...)
 		switch (format[i])
 		{
 			case 'c':
-				printf("%c", va_arg(arg, char));
+				printf("%c", va_arg(arg, int));
 				break;
 			case 's':
-				if (format[i] != NULL)
-					printf("%s", va_arg(arg, char *));
+				temp = va_arg(arg, char *);
+				if (temp != NULL)
+					printf("%s", temp);
 				else
 					printf("(nil)");
 				break;
@@ -35,9 +37,23 @@ void print_all(const char * const format, ...)
 				i++;
 				continue;
 		}
-		if (format[i + 1] != '\0')
+		i++;
+		if (format[i] != '\0')
 			printf(", ");
 	}
 	va_end(arg);
 	printf("\n");
+}
+
+#include "variadic_functions.h"
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    print_all("ceis", 'B', 3, "stSchool");
+    return (0);
 }
