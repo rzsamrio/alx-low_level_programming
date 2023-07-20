@@ -7,28 +7,37 @@
 
 void print_all(const char * const format, ...)
 {
-	type formats[] = {
-		{'c', 0},
-		{'i', 0},
-		{'f', 0},
-		{'s', 0}
-	};
-	int i, j;
-	int temp;
+	int i;
 	va_list arg;
 
 	va_start(arg, format);
 	i = 0;
-	j = 0;
-	while (format[i] != '\0')
+	while (format != NULL && format[i] != '\0')
 	{
-		switch(format[i])
+		switch (format[i])
 		{
-			case 'c': (char) temp = va_arg(arg, char);
+			case 'c':
+				printf("%c", va_arg(arg, char));
 				break;
+			case 's':
+				if (format[i] != NULL)
+					printf("%s", va_arg(arg, char *));
+				else
+					printf("(nil)");
+				break;
+			case 'f':
+				printf("%f", va_arg(arg, double));
+				break;
+			case 'i':
+				printf("%i", va_arg(arg, int));
+				break;
+			default:
+				i++;
+				continue;
 		}
-		switch (expression)
-		{}
-
+		if (format[i + 1] != '\0')
+			printf(", ");
 	}
+	va_end(arg);
+	printf("\n");
 }
