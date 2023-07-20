@@ -27,12 +27,12 @@ void print_all(const char * const format, ...)
 					printf("(nil)");
 					break;
 				}
-				printf("%s", temp);	
+				printf("%s", temp);
 				break;
-				case 'f':
+			case 'f':
 				printf("%f", va_arg(arg, double));
 				break;
-				case 'i':
+			case 'i':
 				printf("%i", va_arg(arg, int));
 				break;
 			default:
