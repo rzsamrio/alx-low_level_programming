@@ -22,15 +22,17 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				temp = va_arg(arg, char *);
-				if (temp != NULL)
-					printf("%s", temp);
-				else
+				if (temp == NULL)
+				{
 					printf("(nil)");
+					break;
+				}
+				printf("%s", temp);	
 				break;
-			case 'f':
+				case 'f':
 				printf("%f", va_arg(arg, double));
 				break;
-			case 'i':
+				case 'i':
 				printf("%i", va_arg(arg, int));
 				break;
 			default:
