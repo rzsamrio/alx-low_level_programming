@@ -13,6 +13,7 @@ struct print_type
 {
 	char c;
 	int num;
-} typedef type;
+};
+typedef struct print_type type;
 
 #endif
