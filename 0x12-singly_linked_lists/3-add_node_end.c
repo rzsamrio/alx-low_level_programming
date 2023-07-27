@@ -11,6 +11,8 @@ list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *node, *iterator;
 
+	if (head == NULL || str == NULL)
+		return (NULL);
 	node = malloc(sizeof(list_t));
 	if (node == NULL)
 		return (NULL);
