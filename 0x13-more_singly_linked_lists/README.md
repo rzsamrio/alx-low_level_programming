@@ -1,1 +1,1 @@
-# C, more singke linked lists
+# C, more single linked lists
