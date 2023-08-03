@@ -10,10 +10,8 @@
 void print_binary(unsigned long int n)
 {
 	unsigned long int tmp;
-	int nzero;
 
 	tmp = 0;
-	nzero = getzero(tmp);
 	while (n)
 	{
 		tmp <<= 1;
