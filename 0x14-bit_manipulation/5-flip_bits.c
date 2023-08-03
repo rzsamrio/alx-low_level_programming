@@ -18,7 +18,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 		res = diff & 1U;
 		if (res == 1)
 			num++;
-		diff >>= 1;
+		diff >>= 1U;
 	}
 	return (num);
 }
