@@ -1,16 +1,28 @@
 #include "main.h"
 
+/**
+ * binary_to_uint - converts a binary string to an unsigned decimal
+ * @b: string
+ * Return: decimal number
+*/
 unsigned int binary_to_uint(const char *b)
 {
-	int i, len;
+	int n, len;
 	unsigned int bin, decimal;
 
 	len = _strlen(b);
-	for (i = 0, decimal = 0; i < len; i++)
+	bin = stringbint(b);
+	if (bin == 0)
+		return (0);
+	decimal = 0;
+	while (len != 0)
 	{
-		decimal = i +
+		n = ((bin / _pow(10, len - 1)) % 10);
+		n *= _pow(2, len - 1);
+		decimal += n;
+		len--;
 	}
-	return (bin);
+	return (decimal);
 }
 
 /**
@@ -29,6 +41,12 @@ int _strlen(const char *s)
 		return (1 + _strlen(++s));
 }
 
+/**
+ * _pow - performs the power operation
+ * @base: base number
+ * @exponent: exponent
+ * Return: power
+*/
 int _pow(int base, int exponent)
 {
 	int i, result;
@@ -39,8 +57,24 @@ int _pow(int base, int exponent)
 	return (result);
 }
 
-int main(void)
+/**
+ * stringbint - converts a binary string to a binary integer
+ * @s: binary string to convert
+ * Return: integer
+*/
+unsigned int stringbint(const char *s)
 {
-	printf("%d %d %d\n", _pow(2,5), _pow(3, 0), _pow(16, 7));
-	return (0);
+	unsigned int number;
+	int len, i;
+
+	len = _strlen(s);
+	number = 0;
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if (!(s[i] >= '0' && s[i] <= '1')) /* only allows bits*/
+			return (0);
+		number += (s[i] - '0') * _pow(10, len - 1);
+		len--;
+	}
+	return (number);
 }

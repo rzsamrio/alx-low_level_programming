@@ -7,5 +7,6 @@
 unsigned int binary_to_uint(const char *b);
 int _strlen(const char *s);
 int _pow(int base, int exponent);
+unsigned int stringbint(const char *s);
 
 #endif
