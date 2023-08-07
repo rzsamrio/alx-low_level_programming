@@ -1,27 +1,47 @@
 #include "main.h"
 
+/**
+ * print_binary - prints the binary form of an int
+ * @n : int to print
+ *
+ * Using bitwise operators
+ */
+
 void print_binary(unsigned long int n)
 {
-	if (n > _pow(w, 8))
+	unsigned long int tmp;
+	int czero, c;
+
+	tmp = 0;
+	if (n == 0)
 	{
-		putchar(0);
+		_putchar('0');
+		return;
 	}
-
-
+	for (czero = 0, c = 0; n > 0;)
+	{
+		tmp <<= 1;
+		if ((n & 1U) == 1)
+		{
+			c = 1;
+			tmp++;
+		}
+		else
+		{
+			if (c == 0)
+				czero++;
+		}
+		n >>= 1;
+	}
+	while (tmp)
+	{
+		if ((tmp & 1U) == 1)
+			_putchar('1');
+		else
+			_putchar('0');
+		tmp >>= 1;
+	}
+	for (c = 0; c < czero; c++)
+		_putchar('0');
 }
 
-/**
- * _pow - performs the power operation
- * @base: base number
- * @exponent: exponent
- * Return: power
-*/
-int _pow(int base, int exponent)
-{
-	int i, result;
-
-	result = 1;
-	for (i = 0; i < exponent; i++)
-		result *= base;
-	return (result);
-}
