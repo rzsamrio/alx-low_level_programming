@@ -19,7 +19,12 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 	for (i = 0, wc = 0; *text_content != '\0'; i++)
 	{
-		wc += write(fd, text_content, 1);
+		if ((write(fd, text_content, 1)) == -1)
+		{
+			close(fd);
+			return (1);
+		}
+		wc++;
 		text_content++;
 	}
 	if (wc != i)

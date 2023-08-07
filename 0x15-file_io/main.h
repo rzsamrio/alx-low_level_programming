@@ -1,7 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define MAX_LEN 1024
 
 #include <stdio.h>
 #include <fcntl.h>
