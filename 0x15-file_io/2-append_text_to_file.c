@@ -23,11 +23,12 @@ int append_text_to_file(const char *filename, char *text_content)
 	}
 	while (*text_content != '\0')
 	{
-		if (write(255, text_content, 1) != 1)
+		if (write(fd, text_content, 1) != 1)
 		{
 			close(fd);
 			return (-1);
 		}
+		text_content++;
 	}
 	close(fd);
 	return (1);

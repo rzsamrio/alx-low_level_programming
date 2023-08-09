@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 	wc = write(fdt, buffer, rc);
 	if (wc != rc)
 		err_msg(99, argv[2]);
-	free (buffer);
+	free(buffer);
 	return (0);
 }
 
