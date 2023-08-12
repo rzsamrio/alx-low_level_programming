@@ -11,53 +11,56 @@
 
 int main(int argc, char *argv[])
 {
-	int fdf, fdt;
+	int fdf, fdt, stat;
 	ssize_t len, rc, wc, buf_size;
-	char *buffer;
+	char *buffer, *tmp;
 
 	buf_size = 1024;
 	if (argc != 3)
-		err_msg(97, NULL);
+		err_check(-1, 97, NULL);
 	fdf = open(argv[1], O_RDONLY);
-	if (fdf == -1)
-		err_msg(98, argv[1]);
+	err_check(fdf, 98, argv[1]);
 	buffer = malloc(buf_size);
 	if (buffer == NULL)
 		return (1);
-	for (rc = 0; (len = read(fdf, &buffer[rc], buf_size)) > 0; rc += len)
+	for (rc = 0; (len = read(fdf, &buffer[rc], 1024)) > 0;)
 	{
-		if (len == -1)
+		rc += len;
+		stat = close_buffer(len, fdf, 0, buffer);
+		err_check(stat, 98, argv[1]);
+		if (rc == buf_size)
 		{
-			close_buffer(fdf, buffer);
-			err_msg(98, argv[1]);
-		}
-		if (len == buf_size)
 			buf_size *= 2;
-		buffer = realloc(buffer, buf_size);
-		if (buffer == NULL)
-			return (1);
+			tmp = realloc(buffer, buf_size);
+			if (tmp == NULL)
+			{
+				free(buffer);
+				return (1);
+			}
+			buffer = tmp;
+		}
 	}
+	buffer[rc] = '\0';
 	fdt = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (fdt == -1)
-	{
-		close_buffer(fdf, buffer);
-		err_msg(99, argv[2]);
-	}
+	stat = close_buffer(fdt, fdf, 0, buffer);
+	err_check(stat, 99, argv[2]);
 	wc = write(fdt, buffer, rc);
-	close_buffer(fdf, NULL);
-	close_buffer(fdt, buffer);
+	close_buffer(-1, fdf, fdt, buffer);
 	if (wc != rc)
-		err_msg(99, argv[2]);
+		err_check(-1, 99, argv[2]);
 	return (0);
 }
 
 /**
- * err_msg - prints an error message
+ * err_check - prints an error message
+ * @status: checks if function should run
  * @err_flag: exit code
  * @s: string to print
  */
-void err_msg(int err_flag, char *s)
+void err_check(int status, int err_flag, char *s)
 {
+	if (status != -1)
+		return;
 	switch (err_flag)
 	{
 		case (97):
@@ -74,19 +77,39 @@ void err_msg(int err_flag, char *s)
 
 /**
  * close_buffer - closes an fd and frees a buffer
- * @fd : file descriptor
+ * @stat: checks if function should perform
+ * @fd: file descriptor
+ * @fd2: second file descriptor if necessary
  * @buffer: dynamic string
+ * Return: exit on fail, -1 on close
+ *
+ * Returns 0 if it shouldn't close
  */
 
-void close_buffer(int fd, char *buffer)
+int close_buffer(int stat, int fd, int fd2, char *buffer)
 {
 	int status;
 
+	if (stat != -1)
+		return (0);
 	free(buffer);
-	status = close(fd);
-	if (status == -1)
+	if (fd != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd);
-		exit(100);
+		status = close(fd);
+		if (status == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd);
+			exit(100);
+		}
 	}
+	if (fd2 != 0)
+	{
+		status = close(fd2);
+		if (status == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd);
+			exit(100);
+		}
+	}
+	return (-1);
 }
