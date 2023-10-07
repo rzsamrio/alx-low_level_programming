@@ -37,7 +37,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		while (curr->next != NULL)
 			curr = curr->next;
-		curr = node;
+		curr->next = node;
 	}
 	return (1);
 }
