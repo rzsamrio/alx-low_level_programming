@@ -35,29 +35,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		ht->array[index] = node;
 	else
 	{
-		while (curr->next != NULL)
-		{
-			/* Same key? */
-			if (strcmp(key, curr->key) == 0)
-			{
-				free(curr->value);
-				curr->value = strdup(value);
-				if (curr->value == NULL)
-					return (0);
-			}
-			else
-				curr = curr->next;
-		}
-		/* Test last node */
-		if (strcmp(key, curr->key) == 0)
-		{
-			free(curr->value);
-			curr->value = strdup(value);
-			if (curr->value == NULL)
-				return (0);
-		}
-		else
-			curr->next = node;
+		node->next = curr;
+		ht->array[index] = node;
 	}
 	return (1);
 }
