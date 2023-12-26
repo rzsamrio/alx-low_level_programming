@@ -213,7 +213,7 @@ void shash_table_print(const shash_table_t *ht)
 }
 
 /**
- * shash_table_print - Prints hash table in descending order
+ * shash_table_print_rev - Prints hash table in descending order
  * @ht: Table to print
  */
 
