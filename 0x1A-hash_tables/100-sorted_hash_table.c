@@ -119,7 +119,7 @@ shash_node_t *init_node(const char *key, const char *value)
  * @node: new node to update
  */
 
-void update_sort(shash_table_t *ht, shash_node_t *node) 
+void update_sort(shash_table_t *ht, shash_node_t *node)
 {
 	shash_node_t *ptr;
 
