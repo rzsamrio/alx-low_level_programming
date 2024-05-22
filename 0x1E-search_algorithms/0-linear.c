@@ -5,7 +5,7 @@
  * @array: Pointer to first element of the array
  * @size: length of array
  * @value: value to search for
- * Return: Index of first occurrence of value
+ * Return: Index of first occurrence of value or -1 if not found
  */
 
 int linear_search(int *array, size_t size, int value)
